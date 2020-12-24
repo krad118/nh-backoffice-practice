@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BookService } from 'src/app/libraries/services/book.service';
-import { Book } from '../../libraries/interfaces/book';
+import { BookService } from 'src/app/lib/services/book.service';
+import { Book } from 'src/app/lib/interfaces/book';
 
 type headerTable = {header: string, field: string, type?: string};
 

@@ -1,6 +1,6 @@
 <p-panel>
   <p-header>
-    <button pButton type="button" label="Agregar" class="p-button-success" icon="pi pi-plus"></button>
+    <button pButton routerLink="/books/add/" type="button" label="Agregar" class="p-button-success" icon="pi pi-plus"></button>
   </p-header>
   <div *ngIf="books.length <= 0 else bookTable">
     <div class="d-flex align-items-center justify-content-center h-100">
@@ -33,7 +33,7 @@
            <td>
             <ng-container *ngFor="let action of actions">
               <ng-container [ngSwitch]="action">
-                <button pButton type="button" label="Editar" class="p-button-primary" icon="pi pi-pencil" *ngSwitchCase="'edit'"></button>
+                <button pButton [routerLink]="['/books', 'book', book.id]" type="button" label="Editar" class="p-button-primary" icon="pi pi-pencil" *ngSwitchCase="'edit'"></button>
                 <button pButton type="button" label="Eliminar" class="p-button-danger" icon="pi pi-times" *ngSwitchCase="'delete'"></button>
               </ng-container>
             </ng-container> 
