@@ -32,6 +32,10 @@ export class BookFormComponent implements OnInit {
     })
   }
 
+  get f() {
+    return this.bookForm.controls;
+  }
+
   onSubmit(): void {
 
   }

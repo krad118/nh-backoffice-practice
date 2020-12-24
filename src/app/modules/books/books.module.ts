@@ -15,6 +15,7 @@ import { PanelModule } from 'primeng/panel';
 import { BookService } from 'src/app/lib/services/book.service';
 import { BookApiService } from 'src/app/lib/services/book-api.service';
 import { BookFormComponent } from './components/book-form/book-form.component';
+import { SharedModule as MyAppSharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { BookFormComponent } from './components/book-form/book-form.component';
     BooksRoutingModule,
     ButtonModule,
     TableModule,
-    PanelModule
+    PanelModule,
+    MyAppSharedModule,
   ],
   providers: [{provide: BookService, useClass: BookApiService}],
 })
