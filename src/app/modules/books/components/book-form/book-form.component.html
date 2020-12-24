@@ -1,0 +1,29 @@
+<form [formGroup]="bookForm" (ngSubmit)="onSubmit();">
+  <label>Name</label>
+  <input type="text" formControlName="name"><br />
+
+  <label>isbn</label>
+  <input type="text" formControlName="isbn"><br />
+
+  <label>Name</label>
+  <input type="file" accept="image/*" (change)="onChangeFile($event);"><br />
+
+  <label>language</label>
+  <input type="text" formControlName="language"><br />
+
+  <label>publishedDate</label>
+  <input type="date" formControlName="publishedDate"><br />
+
+  <label>publisher</label>
+  <input type="text" formControlName="publisher"><br />
+
+  <label>numberPages</label>
+  <input type="number" formControlName="numberPages"><br />
+
+  <label>license</label>
+  <input type="text" formControlName="license"><br />
+
+  <label>summary</label>
+  <textarea formControlName="summary"></textarea><br />
+  <button type="submit">Guardar</button>
+</form>

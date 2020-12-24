@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { BooksRoutingModule } from './books-routing.module';
 import { BookListComponent } from './pages/book-list/book-list.component';
@@ -13,6 +14,7 @@ import { PanelModule } from 'primeng/panel';
 
 import { BookService } from 'src/app/lib/services/book.service';
 import { BookApiService } from 'src/app/lib/services/book-api.service';
+import { BookFormComponent } from './components/book-form/book-form.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +22,14 @@ import { BookApiService } from 'src/app/lib/services/book-api.service';
     BookCreatedComponent,
     BookEditComponent,
 
-    BookTableComponent
+    BookTableComponent,
+
+    BookFormComponent
     
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     BooksRoutingModule,
     ButtonModule,
     TableModule,
