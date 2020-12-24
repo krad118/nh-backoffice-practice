@@ -1,3 +1,5 @@
-<div *ngIf="field.touched && field.errors">
-  <div *ngFor="let error of errorsMessage">{{ error }}</div>
-</div>
+<ng-container *ngIf="field">
+  <div *ngIf="field.touched && field.errors">
+    <div *ngFor="let error of errorsMessage">{{ error }}</div>
+  </div>
+</ng-container>

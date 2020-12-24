@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Book } from 'src/app/lib/interfaces/book';
+import { BookService } from 'src/app/lib/services/book.service';
 
 @Component({
   selector: 'app-book-form',
@@ -10,7 +12,8 @@ export class BookFormComponent implements OnInit {
 
   bookForm: FormGroup;
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private bookService: BookService
   ) { }
 
   ngOnInit(): void {
@@ -22,7 +25,7 @@ export class BookFormComponent implements OnInit {
         Validators.maxLength(11),
         Validators.minLength(11)
       ]],
-      image: [null, Validators.required],
+      image: [null],
       language: [null, [Validators.required, Validators.pattern(/^es|en$/)]],
       publishedDate: [null, Validators.required],
       publisher: [null, Validators.required],
@@ -37,11 +40,20 @@ export class BookFormComponent implements OnInit {
   }
 
   onSubmit(): void {
+    if (this.bookForm.valid) {
+      const book: Book = this.bookForm.value;
+      this.bookService.createBook(book).subscribe(
+        book => console.log(book)
+      )
 
+    }else {
+      console.log(this.bookForm.errors);
+    }
   }
 
   onChangeFile(event): void {
-
+    const image: File = event.target.files[0];
+    this.bookForm.get('image').setValue(image);
   }
 
 }

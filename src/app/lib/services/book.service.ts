@@ -13,7 +13,12 @@ export class BookService implements BookImplementation {
   getBooks(): Observable<Book[]> {
     return new Observable<Book[]>(() => {});
   };
+
   getBook(id: number): Observable<Book> {
+    return new Observable<Book>(() => {});
+  };
+
+  createBook(book: Book): Observable<Book> {
     return new Observable<Book>(() => {});
   };
 }
