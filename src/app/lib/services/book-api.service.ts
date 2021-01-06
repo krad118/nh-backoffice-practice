@@ -19,11 +19,11 @@ export class BookApiService extends BookService {
   }
 
   getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(`${this.apiUrl}`);
+    return this.http.get<Book[]>(`${this.apiUrl}shop/`);
   };
 
   getBook(id: number): Observable<Book> {
-    return this.http.get<Book>(`${this.apiUrl}${id}/`);
+    return this.http.get<Book>(`${this.apiUrl}shop/${id}/`);
   };
 
   createBook(book: Book): Observable<Book> {

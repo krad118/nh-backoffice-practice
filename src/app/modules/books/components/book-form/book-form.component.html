@@ -1,37 +1,42 @@
-<form [formGroup]="bookForm" (ngSubmit)="onSubmit();">
-  <label>Name</label>
-  <input type="text" formControlName="name">
-  <app-message-inline-error [field]="f.name"></app-message-inline-error>
-  <br />
-
-  <label>isbn</label>
-  <input type="text" formControlName="isbn">
-  <app-message-inline-error [field]="f.isbn"></app-message-inline-error>
-  <br />
-
-  <label>Name</label>
-  <input type="file" accept="image/*" (change)="onChangeFile($event);"><br />
-
-  <label>language</label>
-  <input type="text" formControlName="language">
-  <app-message-inline-error [field]="f.language"></app-message-inline-error>
-  <br />
-
-  <label>publishedDate</label>
-  <input type="date" formControlName="publishedDate"><br />
-
-  <label>publisher</label>
-  <input type="text" formControlName="publisher"><br />
-
-  <label>numberPages</label>
-  <input type="number" formControlName="numberPages">
-  <app-message-inline-error [field]="f.number"></app-message-inline-error>
-  <br />
-
-  <label>license</label>
-  <input type="text" formControlName="license"><br />
-
-  <label>summary</label>
-  <textarea formControlName="summary"></textarea><br />
-  <button type="submit">Guardar</button>
-</form>
+<ng-container *ngIf="bookForm">
+  <form [formGroup]="bookForm" (ngSubmit)="onSubmit();">
+    <label>Name</label>
+    <input type="text" formControlName="name">
+    <app-message-inline-error [field]="f.name"></app-message-inline-error>
+    <br />
+  
+    <label>isbn</label>
+    <input type="text" formControlName="isbn">
+    <app-message-inline-error [field]="f.isbn"></app-message-inline-error>
+    <br />
+  
+    <label>Name</label>
+    <input type="file" accept="image/*" (change)="onChangeFile($event);"><br />
+    <ng-container *ngIf='imagePreviewSource'>
+      <img [src]="imagePreviewSource" width="100">
+    </ng-container><br />
+  
+    <label>language</label>
+    <input type="text" formControlName="language">
+    <app-message-inline-error [field]="f.language"></app-message-inline-error>
+    <br />
+  
+    <label>publishedDate</label>
+    <input type="date" formControlName="publishedDate"><br />
+  
+    <label>publisher</label>
+    <input type="text" formControlName="publisher"><br />
+  
+    <label>numberPages</label>
+    <input type="number" formControlName="numberPages">
+    <app-message-inline-error [field]="f.number"></app-message-inline-error>
+    <br />
+  
+    <label>license</label>
+    <input type="text" formControlName="license"><br />
+  
+    <label>summary</label>
+    <textarea formControlName="summary"></textarea><br />
+    <button type="submit">Guardar</button>
+  </form>
+</ng-container>
