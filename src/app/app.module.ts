@@ -11,6 +11,8 @@ import { SharedModule } from 'primeng/api';
 import { MenubarModule } from 'primeng/menubar';
 import { MenuComponent } from './components/menu/menu.component';
 import { AuthorizatedInterceptor } from './core/interceptors/authorizated.interceptor';
+import { StorageServiceModule } from 'ngx-webstorage-service';
+import { AuthorizatedStorageService } from 'src/app/core/services/authorizated-storage.service';
 
 
 @NgModule({
@@ -26,8 +28,12 @@ import { AuthorizatedInterceptor } from './core/interceptors/authorizated.interc
     HttpClientModule,
     SharedModule,
     MenubarModule,
+    StorageServiceModule
   ],
   bootstrap: [AppComponent],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthorizatedInterceptor, multi: true}]
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthorizatedInterceptor, multi: true},
+    AuthorizatedStorageService
+  ]
 })
 export class AppModule { }

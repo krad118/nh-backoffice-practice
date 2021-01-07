@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { AuthorizatedStorageService } from '../services/authorizated-storage.service';
+import { environment } from 'src/environments/environment';
+
 import {
   HttpRequest,
   HttpHandler,
@@ -10,7 +13,9 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class AuthorizatedInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(
+    private authorizatedStorage:AuthorizatedStorageService
+  ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token = this.getToken();
@@ -23,7 +28,7 @@ export class AuthorizatedInterceptor implements HttpInterceptor {
   }
 
   getToken(): string {
-    const token = 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjA5OTg1Njg5LCJlbWFpbCI6ImpjcmFtaXJlenRlbGxvQGdtYWlsLmNvbSJ9.HHLn4HtasIl_XymWH6j1-C18gBob4cKn4LQtkXgJYSI';
-    return token;
+    const token = this.authorizatedStorage.getTokenStorage();
+    return `${environment.authHeaderPrefix} ${token}`;
   }
 }
