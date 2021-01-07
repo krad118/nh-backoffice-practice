@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BookCreatedComponent } from './pages/book-created/book-created.component';
 import { BookEditComponent } from './pages/book-edit/book-edit.component';
 import { BookListComponent } from './pages/book-list/book-list.component';
-
+import { AuthorizatedGuard } from 'src/app/core/guards/authorizated.guard';
 
 const routes: Routes = [
   {
@@ -12,6 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'add',
+    canActivate: [AuthorizatedGuard],
     component: BookCreatedComponent
   },
   {
