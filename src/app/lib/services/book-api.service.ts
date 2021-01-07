@@ -19,12 +19,7 @@ export class BookApiService extends BookService {
   }
 
   getBooks(): Observable<Book[]> {
-    const headers = new HttpHeaders({
-      'Authorization': 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjA5OTg1Njg5LCJlbWFpbCI6ImpjcmFtaXJlenRlbGxvQGdtYWlsLmNvbSJ9.HHLn4HtasIl_XymWH6j1-C18gBob4cKn4LQtkXgJYSI'
-    })
-    return this.http.get<Book[]>(`${this.apiUrl}`, {
-      headers: headers
-    });
+    return this.http.get<Book[]>(`${this.apiUrl}`);
   };
 
   getBook(id: number): Observable<Book> {
