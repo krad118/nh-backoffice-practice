@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { formatDate } from '@angular/common';
 import { BookService } from './book.service';
 import { Book } from '../interfaces/book';
@@ -19,11 +19,16 @@ export class BookApiService extends BookService {
   }
 
   getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(`${this.apiUrl}shop/`);
+    const headers = new HttpHeaders({
+      'Authorization': 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjA5OTg1Njg5LCJlbWFpbCI6ImpjcmFtaXJlenRlbGxvQGdtYWlsLmNvbSJ9.HHLn4HtasIl_XymWH6j1-C18gBob4cKn4LQtkXgJYSI'
+    })
+    return this.http.get<Book[]>(`${this.apiUrl}`, {
+      headers: headers
+    });
   };
 
   getBook(id: number): Observable<Book> {
-    return this.http.get<Book>(`${this.apiUrl}shop/${id}/`);
+    return this.http.get<Book>(`${this.apiUrl}${id}/`);
   };
 
   createBook(book: Book): Observable<Book> {
