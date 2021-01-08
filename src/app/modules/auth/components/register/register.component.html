@@ -1,0 +1,58 @@
+<h2>Formulario de registro con FormGroup</h2>
+<form [formGroup]="registerForm">
+  <div class="row">
+    <div class="mb-3">
+      <label for="firstName" class="form-label">Nombre</label>
+        <input type="text" name="firstName" id="firstName" class="form-control" 
+        formControlName="firstName">
+      </div> 
+  
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Apellidos</label>
+        <input type="text" name="lastName" id="lastName" class="form-control" formControlName="lastName">
+      </div>
+  
+    <div class="mb-3">
+      <label for="username" class="form-label">Usuario</label>
+        <input type="text" name="username" id="username" class="form-control" 
+        formControlName="username"
+        [ngClass]="{'is-invalid': f.username.invalid && f.username.touched, 'is-valid': f.username.valid && f.username.touched}">
+        <div class="invalid-feedback" *ngIf="f.username.invalid && f.username.touched">
+          <span *ngIf="f.username.hasError('required')">El campo es obligatorio</span>
+          <span *ngIf="f.username.hasError('uniqueUserError')">El usuario ya existe</span>
+        </div>
+    </div>
+  
+    <div class="mb-3">
+      <label for="password" class="form-label">Ingrese su password</label>
+        <input type="password" name="password" id="password" class="form-control" formControlName="password">
+    </div>
+  
+    <div class="mb-3">
+      <label for="confirmPassword" class="form-label">Confirmar password</label>
+        <input type="password" name="confirmPassword" id="confirmPassword" class="form-control"
+        formControlName="confirmPassword"
+        [ngClass]="{'is-invalid': registerForm.hasError('misMatch') && f.confirmPassword.touched}">
+        
+        <div class="invalid-feedback" *ngIf="registerForm.hasError('misMatch') && f.confirmPassword.touched">
+          Las contraseñas no coinciden
+        </div>
+    </div> 
+  
+    <button class="btn btn-primary">Enviar</button>
+  </div>
+</form>
+
+<pre>
+  es valido: {{ registerForm.valid }}
+</pre>
+
+<pre>
+  nombre es valido: {{ registerForm.get('firstName').valid }}
+  {{ firstName.valid }}
+  {{ f.firstName.valid }}
+</pre>
+
+<pre>
+  apellido es valido: {{ f.lastName.valid }}
+</pre>

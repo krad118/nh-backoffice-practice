@@ -11,8 +11,5 @@ export class AppComponent {
   title = 'nh-backoffice-practice';
   constructor(
     private authStorage: AuthorizatedStorageService
-  ) {
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjA5OTkwNjAyLCJlbWFpbCI6ImpjcmFtaXJlenRlbGxvQGdtYWlsLmNvbSJ9.7NUGiMLg7TKbwy2Oa3Jrw7MZCOp_Y5H8BrY2CIypEZo';
-    this.authStorage.setTokenStorage(token);
-  }
+  ) {}
 }
