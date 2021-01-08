@@ -10,10 +10,10 @@ export class MessageInlineErrorComponent implements OnInit {
 
   @Input() field: FormControl;
   errors = {
-    required: "Es un campo obligatorio",
-    errorAccess: "Usuario o password incorrecto",
-    email: "no es un email correcto"
-  }
+    required: 'Es un campo obligatorio',
+    errorAccess: 'Usuario o password incorrecto',
+    email: 'no es un email correcto'
+  };
   errorsMessage: string[];
   constructor() { }
 
@@ -22,13 +22,13 @@ export class MessageInlineErrorComponent implements OnInit {
   }
 
   getErrorsMessage(): string[] {
-    let messages = []
-    for (let propertyName in this.field.errors) {
+    const messages = [];
+    for (const propertyName in this.field.errors) {
       if (this.errors.hasOwnProperty(propertyName)) {
-        messages.push(this.errors[propertyName])
+        messages.push(this.errors[propertyName]);
       }
     }
-    return messages
+    return messages;
   }
 
 }

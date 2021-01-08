@@ -15,8 +15,8 @@ export class BookEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.params.subscribe((params: Params) => {
-      this.bookId = Number(params.id)
-    })
+      this.bookId = Number(params.id);
+    });
   }
 
 }

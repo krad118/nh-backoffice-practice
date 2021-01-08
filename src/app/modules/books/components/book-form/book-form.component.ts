@@ -19,7 +19,7 @@ export class BookFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    let bookData = {
+    const bookData = {
       id: null,
       name: null,
       isbn: null,
@@ -30,7 +30,7 @@ export class BookFormComponent implements OnInit {
       numberPages: null,
       license: null,
       summary: null,
-    }
+    };
 
 
     if (this.bookId) {
@@ -48,22 +48,20 @@ export class BookFormComponent implements OnInit {
           bookData['summary'] = book.summary;
           this.bookForm = this.makeForm(bookData);
         }
-      )
+      );
     }else {
       this.bookForm = this.makeForm(bookData);
     }
-
-    
   }
 
   setFile(imageUrl) {
-    let reader = new FileReader();
+    const reader = new FileReader();
     reader.readAsDataURL(imageUrl);
     reader.onload = () => {
       this.bookForm.patchValue({
         image: reader.result
-      })
-    }
+      });
+    };
   }
 
   previewImage(url) {
@@ -86,7 +84,7 @@ export class BookFormComponent implements OnInit {
       numberPages: [bookData.numberPages, [Validators.required, Validators.min(1)]],
       license: [bookData.license],
       summary: [bookData.summary, Validators.required],
-    })
+    });
   }
 
   get f() {
@@ -97,8 +95,9 @@ export class BookFormComponent implements OnInit {
     if (this.bookForm.valid) {
       const book: Book = this.bookForm.value;
       this.bookService.createBook(book).subscribe(
+        // tslint:disable-next-line:no-shadowed-variable
         book => console.log(book)
-      )
+      );
 
     }else {
       console.log(this.bookForm.errors);

@@ -49,9 +49,9 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/']);
         },
         error => {
-          this.loginForm.setErrors({"submit": error.message});
+          this.loginForm.setErrors({submit: error.message});
         }
-      )
+      );
     }
   }
 }

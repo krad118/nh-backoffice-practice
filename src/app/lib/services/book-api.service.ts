@@ -14,17 +14,18 @@ export class BookApiService extends BookService {
   apiUrl = `${environment.apiUrl}book/`;
   constructor(
     private http: HttpClient
-  ) { 
+  ) {
+
     super();
   }
 
   getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.apiUrl}`);
-  };
+  }
 
   getBook(id: number): Observable<Book> {
     return this.http.get<Book>(`${this.apiUrl}${id}/`);
-  };
+  }
 
   createBook(book: Book): Observable<Book> {
     const formData = this.mapBookToFormData(book);

@@ -26,7 +26,6 @@ import { SharedModule as MyAppSharedModule } from 'src/app/shared/shared.module'
     BookTableComponent,
 
     BookFormComponent
-    
   ],
   imports: [
     CommonModule,

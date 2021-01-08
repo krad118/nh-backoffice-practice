@@ -14,24 +14,24 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     this.items = [
       {
-        label: "DashBoard",
-        icon: "pi pi-chart-bar",
+        label: 'DashBoard',
+        icon: 'pi pi-chart-bar',
       },
       {
-        label: "Libros",
-        icon: "pi pi-file-o",
+        label: 'Libros',
+        icon: 'pi pi-file-o',
         items: [
           {
-            label: "Categorias",
-            icon: "pi pi-copy"
+            label: 'Categorias',
+            icon: 'pi pi-copy'
           },
           {
-            label: "Autores",
-            icon: "pi pi-user"
+            label: 'Autores',
+            icon: 'pi pi-user'
           }
         ]
       }
-    ]
+    ];
   }
 
 }

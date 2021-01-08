@@ -10,11 +10,11 @@ export class MessageInlineErrorComponent implements OnInit {
 
   @Input() field: FormControl;
   errors = {
-    required: "Es un campo obligatorio",
-    pattern: "No hay coincidencia",
-    minlength: "No tiene los valores correctos",
-    maxlength: "Es muy grande"
-  }
+    required: 'Es un campo obligatorio',
+    pattern: 'No hay coincidencia',
+    minlength: 'No tiene los valores correctos',
+    maxlength: 'Es muy grande'
+  };
 
   constructor() { }
 
@@ -23,13 +23,13 @@ export class MessageInlineErrorComponent implements OnInit {
   }
 
   get errorsMessage(): string[] {
-    let messages = []
-    for (let propertyName in this.field.errors) {
+    const messages = [];
+    for (const propertyName in this.field.errors) {
       if (this.errors.hasOwnProperty(propertyName)) {
-        messages.push(this.errors[propertyName])
+        messages.push(this.errors[propertyName]);
       }
     }
-    return messages
+    return messages;
   }
 
   get fieldErrors() {

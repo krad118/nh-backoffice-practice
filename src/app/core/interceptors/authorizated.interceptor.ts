@@ -18,19 +18,20 @@ export class AuthorizatedInterceptor implements HttpInterceptor {
 
   constructor(
     private router: Router,
-    private authorizatedStorage:AuthorizatedStorageService
+    private authorizatedStorage: AuthorizatedStorageService
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token = this.getToken();
     const newrequest = request.clone({
       setHeaders: {
-        'Authorization': token
+        Authorization: token
       }
-    })
+    });
     return next.handle(newrequest).pipe(
-      tap(() => {}, 
-      (error) => {
+      tap(() => {},
+      // tslint:disable-next-line:no-shadowed-variable
+      (error: any) => {
         if (error.status === 401) {
           this.router.navigate(['/auth/login/']);
         }

@@ -13,8 +13,6 @@ export class AuthorizatedGuard implements CanActivate {
     private authorizatedStorage: AuthorizatedStorageService
   ) {}
   canActivate(
-    // validar si el token es valido 
-    // roles y permisos
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.hasAccesss();
@@ -24,7 +22,7 @@ export class AuthorizatedGuard implements CanActivate {
     if (this.authorizatedStorage.getTokenStorage()) {
       return true;
     }
-    this.router.navigate(['/auth/login/'])
+    this.router.navigate(['/auth/login/']);
     return false;
   }
 }

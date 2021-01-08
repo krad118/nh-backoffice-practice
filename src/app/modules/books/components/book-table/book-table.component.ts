@@ -20,7 +20,7 @@ export class BookTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.cols = [
-        { field: 'image', header: 'Portada', type:'image' },
+        { field: 'image', header: 'Portada', type: 'image' },
         { field: 'id', header: 'Id', type: 'string' },
         { field: 'isbn', header: 'Codigo' },
         { field: 'name', header: 'Nombre' },
@@ -31,7 +31,7 @@ export class BookTableComponent implements OnInit {
 
     this.bookService.getBooks().subscribe(
       books => this.books = books
-    )
+    );
   }
 
 }

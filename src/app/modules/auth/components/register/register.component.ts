@@ -34,11 +34,11 @@ export class RegisterComponent implements OnInit {
       ]),
     }, [
       RegisterValidators.passwordMatchValidator
-    ])
+    ]);
   }
 
   get firstName() {
-    return this.registerForm.get('firstName')
+    return this.registerForm.get('firstName');
   }
 
   get f() {
