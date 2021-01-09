@@ -8,6 +8,7 @@ import { AuthorizatedGuard } from 'src/app/core/guards/authorizated.guard';
 const routes: Routes = [
   {
     path: '',
+    canActivate: [AuthorizatedGuard],
     component: BookListComponent
   },
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'book/:id',
+    canActivate: [AuthorizatedGuard],
     component: BookEditComponent
   }
 ];

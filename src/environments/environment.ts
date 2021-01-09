@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   apiUrl: 'http://nh-back.jcramireztello.com/api/v1/',
-  authHeaderPrefix: 'JWT'
+  authHeaderPrefix: 'JWT',
+  loginRedirect: '/'
 };
 
 /*

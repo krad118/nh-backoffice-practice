@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { tap } from 'rxjs/operators';
 import { AuthorizatedStorageService } from '../services/authorizated-storage.service';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 import {
   HttpRequest,
@@ -14,6 +16,7 @@ import { Observable } from 'rxjs';
 export class AuthorizatedInterceptor implements HttpInterceptor {
 
   constructor(
+    private router: Router,
     private authorizatedStorage:AuthorizatedStorageService
   ) {}
 
@@ -23,8 +26,19 @@ export class AuthorizatedInterceptor implements HttpInterceptor {
       setHeaders: {
         'Authorization': token
       }
-    })
-    return next.handle(newrequest);
+    });
+
+    return next.handle(newrequest).pipe(
+      tap(
+        () => {},
+        (error: any) => {
+          if (error.status === 401) {
+            this.router.navigate(['/auth/login'])
+          }
+          return;
+        }
+      )
+    );
   }
 
   getToken(): string {

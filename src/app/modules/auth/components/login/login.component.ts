@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { AuthorizatedStorageService } from 'src/app/core/services/authorizated-storage.service';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login-form',
@@ -12,6 +14,7 @@ export class LoginComponent implements OnInit {
   passwordFieldText: boolean;
   loginForm: FormGroup;
   constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private authorizatedStorage: AuthorizatedStorageService
@@ -44,6 +47,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(username, password).subscribe(
         token => {
           this.authorizatedStorage.setTokenStorage(token.token);
+          this.router.navigate([environment.loginRedirect]);
         },
         error => {
           this.loginForm.setErrors({"submit": error.message});
